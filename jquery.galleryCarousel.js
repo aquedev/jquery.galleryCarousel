@@ -22,6 +22,8 @@ auto:false,
 cycleSettings: {}
 }
 	
+	
+	
 */
 (function ($) {
     'use strict';
