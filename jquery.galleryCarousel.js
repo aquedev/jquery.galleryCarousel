@@ -26,6 +26,7 @@ cycleSettings: {}
 (function ($) {
     'use strict';
 
+    // settings
     var SETTINGS_KEY = 'gallerySettings',
         GAL_WRAPPER_CLASS = 'galleryCarouselParent',
         GAL_NEXT_DISABLED = 'gallery-next-image-disabled',
