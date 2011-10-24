@@ -1,0 +1,308 @@
+/*
+	Styling for the carousel gallery
+*/
+
+/* cc (clear container) or clearfix */ 
+.cc, .clearfix { zoom: 1; } .cc:after, .clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.galleryCarousel{
+	height:288px;
+	background: #aaa;
+	width: 100%;
+}
+    .galleryCarousel-holdingContent img{
+        position:absolute; top:0; left:0;
+    }
+.galleryCarouselTactive {
+    position: relative;
+}
+.galleryCarousel .jcarousel-container{
+	width:100%;
+	background:#000;
+	height:56px;
+	padding:3px 0;
+    position: relative;
+}
+	.galleryCarousel ul{
+		padding:0;
+		margin:0;
+	}
+	.galleryCarousel li{
+		list-style:none;
+	}
+	/*if no js*/
+	.galleryCarousel ul li{
+		list-style:none; float:left;
+	}
+	/*The image gallery*/
+	.galleryCarousel-images{
+		position:relative;
+		height:88%;
+	}
+		.galleryCarousel-images ul{
+			height:100%; overflow:hidden; position:relative;
+		}
+		/* .no-js .galleryCarousel-images ul{ */
+		/* 	overflow-y:scroll; */
+		/* } */
+			.galleryCarousel-images ul li{
+				width:100% !important; height:100% !important; position:relative;
+			}
+				.galleryCarousel-images ul li img{
+					margin:0 auto; max-width:100%; display:block;
+				}
+				.galleryCarousel-images img.full-image{
+					display:none; width:100%;
+				}
+				.galleryCarousel-images img.med-image{
+					display:block; 
+				}
+				.galleryCarousel-images-caption{
+					position:absolute;
+					left:0; bottom:0;
+					overflow:hidden;
+					width: 100%;
+					z-index:2;
+					height:0;
+				}
+					.images-caption-content{
+						padding:8px; color:#fff;
+						position:relative;
+						z-index:2;
+					}
+					.images-caption-trans{
+						opacity: .65;
+						filter: alpha(opacity=65);
+						background:#000;
+						height:500px;
+						position:absolute; top:0; left:0;
+						z-index:1; width:100%;
+					}
+						.images-caption-content h3{
+							font-size:1.12em;
+						}
+						.images-caption-content p{
+							margin:0;
+						}
+						
+		.gallery-next-image,
+		.gallery-prev-image{
+			background: url(../images/gallery-sprites.png) no-repeat transparent;
+			height:50px; width:28px;
+			position:absolute;
+			top:40%;
+			z-index:100;
+			background-color:transparent !important;
+            display: block;
+            overflow: hidden;
+            text-indent: -999em;
+		}
+		/* .no-js .gallery-next-image, */
+		/* .no-js .gallery-prev-image{ */
+		/* 	display:none; */
+		/* } */
+	/*The thumbnail scroller*/
+    .galleryCarousel .jcarousel-clip {
+        width:75%;
+		display:block;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        z-index: 2;
+    }
+	.content-main-article .galleryCarousel .jcarousel-clip{
+		width:74%;
+	}
+        .galleryCarousel .jcarousel-list {
+          z-index: 1;
+          overflow: hidden;
+          position: relative;
+          top: 0pt;
+          left: 0pt;
+          margin: 0pt;
+          padding: 0pt;
+        }
+    
+    
+		.galleryCarousel .galleryCarousel-scroller{
+		}
+
+			.galleryCarousel .galleryCarousel-scroller li{
+				width:80px; float:left; position:relative;
+				margin:1px; display:block; height:53px;
+			}
+			.galleryCarousel .jcarousel-container  li span {
+				display:none; width:76px; height:50px; display:none;
+				position:absolute; border:2px solid #3A7895; top:0; left:0;
+			}
+			.galleryCarousel .jcarousel-container  li.scroller-image-selected span{
+				display:block;
+			}
+			/* .no-js .galleryCarousel .galleryCarousel-scroller a{ */
+			/* 	opacity: 1; */
+			/* 	filter: alpha(opacity=100); */
+			/* } */
+			.galleryCarousel .galleryCarousel-scroller a {
+				background-color: transparent !important;
+				opacity: .50;
+				filter: alpha(opacity=50);
+				display:block;
+				width:100%;
+				overflow:hidden;
+			}
+			.galleryCarousel .jcarousel-container li a img{
+				border:none;
+				width:100%;
+			}
+			.galleryCarousel .jcarousel-container a:hover,
+			.galleryCarousel .jcarousel-container li.scroller-image-selected a{
+					opacity: 1; /* Standard: FF gt 1.5, Opera, Safari */
+					filter: alpha(opacity=100); /* IE lt 8 */
+					-ms-filter: "alpha(opacity=100)"; /* IE 8 */
+					background-color:transparent !important;
+			}
+				.galleryCarousel .jcarousel-container .carouselControl{
+					position:absolute; 
+					left:3%; top:15px;
+					background: url(../images/gallery-sprites.png) no-repeat 0 -166px;
+					width:15px;
+					height:25px;
+				}
+				.galleryCarousel .jcarousel-container .carouselControl-paused{
+					background-position:0 -166px;
+				}
+				.galleryCarousel .jcarousel-container .carouselControl-paused:hover{
+					background-position:-50px -166px;
+				}
+				.galleryCarousel .jcarousel-container .carouselControl-playing{
+					background-position:0 -192px;
+				}
+				.galleryCarousel .jcarousel-container .carouselControl-playing:hover{
+					background-position:-50px -192px;
+				}
+				
+				.galleryCarousel .jcarousel-container .carouselControl-fullScreen{
+					position:absolute; 
+					right:2%; top:17px;
+					background: url(../images/gallery-sprites.png) no-repeat -97px -166px;
+					width:34px;
+					height:23px;
+				}
+				.content-main-article .galleryCarousel .jcarousel-container .carouselControl-fullScreen{
+					right:1%;
+				}
+				.galleryCarousel .jcarousel-container .carouselControl-fullScreen:hover,
+				.galleryCarousel .jcarousel-container .carouselControl-fullScreen-active{
+					background: url(../images/gallery-sprites.png) no-repeat -97px -190px;
+					
+				}
+	
+	
+	.galleryCarousel .jcarousel-next,
+	.galleryCarousel .jcarousel-prev{
+		background: url(../images/gallery-sprites.png);
+		border: 0 none;
+		display: none;
+		height: 54px;
+		position: absolute;
+		top: 3px;
+		width: 21px;
+		z-index: 3;
+		cursor:pointer;
+	}
+	.ie6 .galleryCarousel .jcarousel-next{
+		background: url(../images/gallery-sprites.gif);
+	}
+	.galleryCarousel .jcarousel-next{
+		right:7%;
+	}
+	.galleryCarousel .jcarousel-prev{
+		left:7%;
+	}
+	.content-main-article .galleryCarousel .jcarousel-next{
+		right:8%;
+	}
+	.content-main-article .galleryCarousel .jcarousel-prev{
+		right:8%;
+	}
+	
+	
+	
+/*Individualy styled elements for different carousel styles*/
+/*Yellow themed carousel*/
+
+	.gallery-next-image{ right:0; background-position: 0 -100px;}
+	.gallery-next-image-disabled{ background-position: 0 -100px !important; cursor:default;}
+	.gallery-next-image:hover{ background-position: -50px -100px;}
+	.gallery-prev-image{ left:0; background-position: 0 -50px;}
+	.gallery-prev-image-disabled{ background-position: 0 -50px !important; cursor:default;}
+	.gallery-prev-image:hover{ background-position: -50px -50px;}
+	.galleryCarousel .jcarousel-prev{
+		background-position:-100px -0;
+	}
+	.galleryCarousel .jcarousel-prev:hover{
+		background-position:-150px -0;
+	}
+	.galleryCarousel .jcarousel-prev-disabled{
+		background-position:-100px -0 !important;  cursor:default;
+	}
+	.galleryCarousel .jcarousel-next{
+		background-position:-100px -100px;
+	}
+	.galleryCarousel .jcarousel-next:hover{
+		background-position:-150px -100px;
+	}
+	.galleryCarousel .jcarousel-next-disabled{
+		background-position:-100px -100px !important;  cursor:default;
+	}
+
+	
+
+
+/*Full screen gallery styling*/
+
+.galleryCarouselTfullScreen{
+	display:block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+}
+		.galleryCarouselTfullScreen .galleryCarousel-images{
+			height:91%
+		}		
+				.galleryCarouselTfullScreen .galleryCarousel-images ul li img{
+					margin:0 auto;
+				}
+				.galleryCarouselTfullScreen .galleryCarousel-images img.med-image{display:none;}
+				.galleryCarouselTfullScreen .galleryCarousel-images img.full-image{display:block;}
+				
+		.galleryCarouselTfullScreen .jcarousel-container{
+			height:9%;
+		}
+		
+			.galleryCarouselTfullScreen .jcarousel-clip {
+				width:50%;
+				display:block;
+				margin: 0 auto;
+				overflow: hidden;
+				padding: 0;
+				position: relative;
+				z-index: 2;
+			}
+			.galleryCarouselTfullScreen .jcarousel-container .carouselControl{
+				left:21%;
+			}
+			.galleryCarouselTfullScreen .jcarousel-prev{
+				left:23%;
+			}
+			.galleryCarouselTfullScreen .jcarousel-next{
+				right:23%;
+			}
+			.galleryCarouselTfullScreen .jcarousel-container .carouselControl-fullScreen{
+				right:20%;
+			}
+		.galleryCarouselTfullScreen .galleryCarousel-images ul li{
+			height:100%;
+		}

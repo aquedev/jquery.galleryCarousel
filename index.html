@@ -1,0 +1,189 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 no-js"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<title>jQuery.galleryCarousel demo</title>
+    <link rel="stylesheet" href="css/jquery.galleryCarousel.css" type="text/css" media="screen" />
+    <style type="text/css">
+		body{
+			font-family: Arial, Helvetica, "Nimbus Sans L", "Free Sans", Sans-Serif;
+			color:#555;
+			font-size: 12px; /*12px*/
+			padding:16px;
+		}
+		p{font-size:12px;}
+		pre{
+			background:#ddd;
+			padding:16px;
+			text-align:left;
+			font-size:1.2em;
+		}
+		
+		.docs{
+			clear:both;
+			width:40%;
+		}
+        .contentWrapper {
+            position: relative;
+            width: 80%;
+			margin:20px 20px;
+        }
+		.gallerysmallwidth{
+			width:500px;
+			float:left;
+		}
+    </style>
+    <script src="lib/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="lib/jquery-plugins/jquery.cycle.all.js" type="text/javascript"></script>
+    <script src="lib/jquery-plugins/jquery.jcarousel.js" type="text/javascript"></script>
+    <script src="lib/jquery-plugins/jquery.galleryCarousel.js" type="text/javascript"></script>
+
+  </head>
+  <body>
+	<div id="container">
+		<div class="header">
+			<header>
+				<h1>Gallery Carousel<h1>
+			</header>
+		</div>
+		<h2>Examples:</h2>
+		<div class="contentWrapper">
+		
+			<div>
+				<p>other content</p>
+				<p>other content</p>
+				<p>other content</p>
+				<p>other content</p>
+				
+			</div>
+			
+			<div class="gallerysmallwidth">
+				<h3>Gallery 1</h3>
+				<div class="galleryCarousel gallery1">
+					<ul>
+						<li>
+							<a data-fullscreen="images/large/image-1.jpg" href="images/normal/image-1.jpg">
+								<img src="images/normal/image-1.jpg" title="image 1"  alt="alt image 1" />
+								<p>description for image 1</p>
+							</a>
+						</li>
+						<li>
+							<a data-fullscreen="images/large/image-2.jpg" href="images/normal/image-2.jpg">
+								<img src="images/normal/image-2.jpg" title="image 2"  alt="alt image 2" />
+								<p>description for image 2</p>
+							</a>
+						</li>
+						<li>
+							<a data-fullscreen="images/large/image-3.jpg" href="images/normal/image-3.jpg">
+								<img src="images/normal/image-3.jpg" title="image 3"  alt="alt image 3" />
+								<p>description for image 3</p>
+							</a>
+						</li>
+						<li>
+							<a data-fullscreen="images/large/image-4.jpg" href="images/normal/image-4.jpg">
+								<img src="images/normal/image-4.jpg" title="image 4"  alt="alt image 4" />
+								<p>description for image 4</p>
+							</a>
+						</li>
+						<li>
+							<a data-fullscreen="images/large/image-5.jpg" href="images/normal/image-5.jpg">
+								<img src="images/normal/image-5.jpg" title="image 5"  alt="alt image 5" />
+								<p>description for image 5</p>
+							</a>
+						</li>
+						<li>
+							<a data-fullscreen="images/large/image-6.jpg" href="images/normal/image-6.jpg">
+								<img src="images/normal/image-6.jpg" title="image 6"  alt="alt image 6" />
+								<p>description for image 6</p>
+							</a>
+						</li>
+						<li>
+							<a data-fullscreen="images/large/image-7.jpg" href="images/normal/image-7.jpg">
+								<img src="images/normal/image-7.jpg" title="image 7"  alt="alt image 7" />
+								<p>description for image 7</p>
+							</a>
+						</li>
+						<li>
+							<a data-fullscreen="images/large/image-8.jpg" href="images/normal/image-8.jpg">
+								<img src="images/normal/image-8.jpg" title="image 8"  alt="alt image 8" />
+								<p>description for image 8</p>
+							</a>
+						</li>
+						<li>
+							<a data-fullscreen="images/large/image-9.jpg" href="images/normal/image-9.jpg">
+								<img src="images/normal/image-9.jpg" title="image 9"  alt="alt image 9" />
+								<p>description for image 9</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+			<div class="docs">
+				
+				<h2>
+					Gallery Carousel options and their defaults.
+				</h2>
+				<h3>Requirements:</h3>
+					<ul>
+						<li>
+							jQuery v1.5.2 or later: <a href="http://docs.jquery.com/Downloading_jQuery#Download_jQuery">http://docs.jquery.com/Downloading_jQuery#Download_jQuery</a>
+							
+						</li>
+						<li>
+							jQuery cycle plugin: <a href="https://raw.github.com/malsup/cycle/master/jquery.cycle.all.js">https://raw.github.com/malsup/cycle/master/jquery.cycle.all.js</a>
+							
+						</li>
+						<li>
+							jQuery jCarousel: <a href="http://sorgalla.com/jcarousel">http://sorgalla.com/jcarousel</a>
+							
+						</li>
+					</ul>
+					
+				<h3>
+					Usage:
+				</h3>
+				<p>
+					Initiate the plugin with the call below and use the markup in this demo. 
+					Any cycle plugin options can be passed using the options parameter: 'cycleSettings: {}'.
+					Available <a href="http://jquery.malsup.com/cycle/options.html">jQuery cycle options</a>.
+					Available<a href="http://jquery.malsup.com/cycle/browser.html"> jQuery cycle fx options</a>.
+				</p>
+				
+				<pre>
+$(function(){
+	$('#targetElement').galleryCarousel({});
+});
+				</pre>
+				<h3>Options:</h3>
+				<pre>
+					
+{
+	activeItemClass: 'scroller-image-selected',
+	height: 280,
+	width:null,
+	auto:false,
+	cycleSettings: {}
+}
+					
+				</pre>
+				
+			</div>
+		</div>
+	</div>    
+	<script type="text/javascript">
+		$ = jQuery.noConflict();
+        $(function(){
+                $('.gallery1').galleryCarousel({
+					height: 420, 
+					auto: false,
+					cycleSettings :{}
+				});
+        });
+    </script>
+  </body>
+</html>
