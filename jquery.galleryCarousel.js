@@ -14,13 +14,14 @@ $('#targetElement').galleryCarousel({});
 });
 	
 Options (defaults):
-{
 activeItemClass: 'scroller-image-selected',
 height: 280,
-width:null,
-auto:false,
+width: null,
+showControls: true,
+allowFullScreen: true,
+fullScreenOnLoad: false,
+auto: true,
 cycleSettings: {}
-}
 	
 */
 (function ($) {
@@ -40,8 +41,8 @@ cycleSettings: {}
             height: 280,
             width: null,
             showControls: true,
-            allowFullScreen: false,
-            fullScreenOnLoad: true,
+            allowFullScreen: true,
+            fullScreenOnLoad: false,
             auto: true,
             cycleSettings: {
                 fx: 'fade',
@@ -60,36 +61,32 @@ cycleSettings: {}
             var settings = $.extend(true, {}, DEFAULTS, options),
 				beforeFullscreen = {}; //this will contain details of the gallery element before detachment and full screen
 
-            var getSettings = function ($elem) {
-                return $elem.closest('.' + GAL_WRAPPER_CLASS).data(SETTINGS_KEY);
-            },
-			playSlideShow = function ($elem) {
-			    var settings = getSettings($elem);
+			var playSlideShow = function ($elem) {
 			    settings.$imageWrapper.cycle('resume');
 			    settings.$carouselControl.addClass(GAL_PLAYING_ICON_CLASS).removeClass(GAL_PAUSED_ICON_CLASS);
 			},
 			pauseSlideShow = function ($elem) {
-			    var settings = getSettings($elem);
 			    settings.$imageWrapper.cycle('pause');
 			    settings.$carouselControl.addClass(GAL_PAUSED_ICON_CLASS).removeClass(GAL_PLAYING_ICON_CLASS);
 			},
 			showControls = function ($elem) {
-			    var elemSettings = getSettings($elem);
 			    $elem.append('<a class="carouselControl" href="#"></a>');
-			    elemSettings.$carouselControl = $elem.find('.carouselControl');
-			    if (elemSettings.auto) {
-			        elemSettings.$carouselControl.addClass(GAL_PLAYING_ICON_CLASS);
+			    settings.$carouselControl = $elem.find('.carouselControl');
+			    if (settings.auto) {
+			        settings.$carouselControl.addClass(GAL_PLAYING_ICON_CLASS);
 			    }
-			    elemSettings.$carouselControl.toggle(function (e) {
-			        playSlideShow($(this));
-			        e.preventDefault();
-			    }, function (e) {
-			        pauseSlideShow($(this));
-			        e.preventDefault();
+			    settings.$carouselControl.click(function(e) {
+			    	if($(this).hasClass(GAL_PLAYING_ICON_CLASS)){
+			    		pauseSlideShow($(this));
+			        	e.preventDefault();
+				    }else{
+			        	playSlideShow($(this));
+		        		e.preventDefault();
+			        }
 			    });
 			},
-			removeFullScreen = function (elemSettings) {
-			    var $gallery = elemSettings.$carousel.closest('.' + GAL_WRAPPER_CLASS),
+			removeFullScreen = function () {
+			    var $gallery = settings.$carousel.closest('.' + GAL_WRAPPER_CLASS),
 			        $fullImages = $gallery.find('.galleryCarousel-images'),
 			        $controls = $gallery.find('.carousel-wrapper');
 
@@ -108,15 +105,16 @@ cycleSettings: {}
 			    } else {
 			        $gallery.insertBefore(beforeFullscreen.parentElement.children().get(beforeFullscreen.index));
 			    }
+				fullScreenInitialised = false;
 			},
 			attachFullScreenImage = function($refImage){
-				$('<img class="full-image" src="' + $refImage.data('fullscreen') +'" alt="' + $refImage.attr('title') + ' fullcreen" />').appendTo($refImage.closest('li'));
+				$('<img class="full-image" src="' + $refImage.data('fullscreen') +'" alt="' + $refImage.attr('title') + ' fullscreen" />').appendTo($refImage.closest('li'));
 			},
-			goFullScreen = function (elemSettings) {
-			    var $gallery = elemSettings.$carousel.closest('.' + GAL_WRAPPER_CLASS),
+			goFullScreen = function () {
+			    var $gallery = settings.$carousel.closest('.' + GAL_WRAPPER_CLASS),
 			        $fullImages = $gallery.find('.galleryCarousel-images'),
 			        $controls = $gallery.find('.carousel-wrapper'),
-			        
+
 			        windowHeight = $(window).height();
 
 				if(!fullScreenInitialised){
@@ -125,7 +123,7 @@ cycleSettings: {}
 						attachFullScreenImage($(this).find('img'));
 					});
 				}
-					
+
 			    beforeFullscreen = {
 			        parentElement: $gallery.parent(),
 			        index: $gallery.parent().children().index($gallery),
@@ -145,27 +143,28 @@ cycleSettings: {}
 
 			    $(document).keyup(function (e) {
 			        if (e.keyCode === 27) {
-			            removeFullScreen(elemSettings);
-			            elemSettings.$carousel.find('.carouselControl-fullScreen').removeClass('fullScreen-active');
+			            removeFullScreen();
+			            settings.$carousel.find('.carouselControl-fullScreen').removeClass('fullScreen-active');
 			        }
 			    });
-				
+
 				fullScreenInitialised = true;
 			},
 			initFullScreen = function () {
-			    var $trigger = settings.$carousel.append('<a href="#" class="carouselControl-fullScreen"></a>');
+			    settings.$carousel.append('<a href="#" class="carouselControl-fullScreen"></a>');
+			    var $trigger = settings.$carousel.find('.carouselControl-fullScreen');
 			    $trigger.click(function (e) {
 			        if ($(this).hasClass('fullScreen-active')) {
-			            removeFullScreen(getSettings($trigger));
+			            removeFullScreen();
 			            $(this).removeClass('fullScreen-active');
 			        } else {
-			            goFullScreen(getSettings($trigger));
+			            goFullScreen();
 			            $(this).addClass('fullScreen-active');
 			        }
 			        e.preventDefault();
 			    });
 
-			    if (settings.fullScreenOnLoad) { goFullScreen(getSettings($trigger)); }
+			    if (settings.fullScreenOnLoad) { goFullScreen(); }
 
 			},
 			showContent = function (elementID, slideSpeed) {
@@ -191,15 +190,14 @@ cycleSettings: {}
 			showSlide = function (elemId) {
 			    var $slide = $('#' + elemId),
 					slideIndex = $slide.index(),
-					settings = getSettings($slide),
 					$origImage = $slide.find('img'),
 				    fullScreenHref = $origImage.data('fullscreen');
-					
+
 			    settings.$imageWrapper.cycle(slideIndex);
 			    settings.$currentSlide = $slide;
 
 				if (slideIndex >= settings.totalSlides) {
-					settings.$galleryNextLink.addClass(GAL_NEXT_DISABLED);   
+					settings.$galleryNextLink.addClass(GAL_NEXT_DISABLED
 				} else {
 					settings.$galleryNextLink.removeClass(GAL_NEXT_DISABLED);
 				}
@@ -211,12 +209,10 @@ cycleSettings: {}
 				}
 			},
 			activateSlide = function ($elem) {
-			    var settings = getSettings($elem);
 			    $elem.siblings().removeClass(settings.activeItemClass);
 			    $elem.addClass(settings.activeItemClass);
 			},
 			carousel_initCallback = function (carousel) {
-			    var settings = carousel.container.data(SETTINGS_KEY);
 
 			    settings.$galleryNextLink.bind('click', function () {
 			        if (!$(this).hasClass(GAL_NEXT_DISABLED)) {
@@ -286,7 +282,7 @@ cycleSettings: {}
 				$elem.append('<div class="galleryCarousel-images"><ul class="galleryCarousel-cycle"></ul><a href="#" class="gallery-prev-image gallery-prev-image-disabled">Previous Image</a><a href="#" class="gallery-next-image">Next Image</a></div><div class="carousel-wrapper cc"><ul class="galleryCarousel-scroller"></ul></div>');
 
 				var $fullImages = $elem.find('.galleryCarousel-images').height(settings.height - 62);
-				
+
 				settings.$imageWrapper = $elem.find('.galleryCarousel-cycle');
 				settings.$carousel = $elem.find('.carousel-wrapper');
 				settings.fullScreenUrls = [];
@@ -322,18 +318,18 @@ cycleSettings: {}
 				$elem.find('> ul').remove();
 			},
 			initialiseGallery = function(settings){
-			
+
 				var $self = $(this);
 				buildImageGallery($self, settings);
 				$self.addClass(GAL_WRAPPER_CLASS);
-				
+
 				settings.$currentSlide           = settings.$imageWrapper.children('li:first-child');
 				settings.$carouselItem           = $self.find('.jcarousel-item a');
 				settings.totalSlides             = (settings.$imageWrapper.children().size() - 1); //-1 to account for the zero index
 				settings.$carouselScroller       = $self.find('.galleryCarousel-scroller');
 				settings.$galleryNextLink        = $self.find('.gallery-next-image');
 				settings.$galleryPrevLink        = $self.find('.gallery-prev-image');
-				
+
 
 			    $self.data(SETTINGS_KEY, settings);
 
