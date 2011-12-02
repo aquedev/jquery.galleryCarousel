@@ -82,40 +82,30 @@
 								<p>description for image 3</p>
 							</a>
 						</li>
+					</ul>
+				</div>
+			</div>
+<br />
+			<div class="gallerysmallwidth">
+				<h3>Gallery 2</h3>
+				<div class="galleryCarousel gallery2">
+					<ul>
 						<li>
 							<a data-fullscreen="images/large/image-4.jpg" href="images/normal/image-4.jpg">
 								<img src="images/normal/image-4.jpg" title="image 4"  alt="alt image 4" />
-								<p>description for image 4</p>
+								<p>description for image 1</p>
 							</a>
 						</li>
 						<li>
 							<a data-fullscreen="images/large/image-5.jpg" href="images/normal/image-5.jpg">
 								<img src="images/normal/image-5.jpg" title="image 5"  alt="alt image 5" />
-								<p>description for image 5</p>
+								<p>description for image 2</p>
 							</a>
 						</li>
 						<li>
 							<a data-fullscreen="images/large/image-6.jpg" href="images/normal/image-6.jpg">
 								<img src="images/normal/image-6.jpg" title="image 6"  alt="alt image 6" />
-								<p>description for image 6</p>
-							</a>
-						</li>
-						<li>
-							<a data-fullscreen="images/large/image-7.jpg" href="images/normal/image-7.jpg">
-								<img src="images/normal/image-7.jpg" title="image 7"  alt="alt image 7" />
-								<p>description for image 7</p>
-							</a>
-						</li>
-						<li>
-							<a data-fullscreen="images/large/image-8.jpg" href="images/normal/image-8.jpg">
-								<img src="images/normal/image-8.jpg" title="image 8"  alt="alt image 8" />
-								<p>description for image 8</p>
-							</a>
-						</li>
-						<li>
-							<a data-fullscreen="images/large/image-9.jpg" href="images/normal/image-9.jpg">
-								<img src="images/normal/image-9.jpg" title="image 9"  alt="alt image 9" />
-								<p>description for image 9</p>
+								<p>description for image 3</p>
 							</a>
 						</li>
 					</ul>
@@ -179,9 +169,14 @@ $(function(){
 		$ = jQuery.noConflict();
         $(function(){
                 $('.gallery1').galleryCarousel({
-					height: 420, 
-					auto: false,
-					cycleSettings :{}
+					height: 450, 
+					auto: true,
+					fullScreenOnLoad:false
+				});
+                $('.gallery2').galleryCarousel({
+					height: 430, 
+					auto: true,
+					fullScreenOnLoad:false
 				});
         });
     </script>

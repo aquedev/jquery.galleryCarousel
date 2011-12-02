@@ -1,4 +1,4 @@
-/*jslint browser:true, white:true, onevar: true*/
+/*jslint browser:true, white:false, onevar: true*/
 /*global window, jQuery */
 /*
 Authors: David Taylor/Stephen Zsolnai http://the-taylors.org/
@@ -22,20 +22,16 @@ auto:false,
 cycleSettings: {}
 }
 	
-	
-	
 */
 (function ($) {
     'use strict';
 
-    // settings
     var SETTINGS_KEY = 'gallerySettings',
         GAL_WRAPPER_CLASS = 'galleryCarouselParent',
         GAL_NEXT_DISABLED = 'gallery-next-image-disabled',
         GAL_PREV_DISABLED = 'gallery-prev-image-disabled',
         GAL_PAUSED_ICON_CLASS = 'carouselControl-paused',
         GAL_PLAYING_ICON_CLASS = 'carouselControl-playing',
-
         CONTROLS_HEIGHT = 56,
         CONTROLS_FULLSCR_HEIGHT = 80,
 
@@ -44,7 +40,8 @@ cycleSettings: {}
             height: 280,
             width: null,
             showControls: true,
-            allowFullScreen: true,
+            allowFullScreen: false,
+            fullScreenOnLoad: true,
             auto: true,
             cycleSettings: {
                 fx: 'fade',
@@ -54,7 +51,7 @@ cycleSettings: {}
                 cleartype: true
             }
         },
-        
+		fullScreenInitialised = false,
 		itemindex = 1;
 
     $.fn.galleryCarousel = function (options) {
@@ -112,6 +109,9 @@ cycleSettings: {}
 			        $gallery.insertBefore(beforeFullscreen.parentElement.children().get(beforeFullscreen.index));
 			    }
 			},
+			attachFullScreenImage = function($refImage){
+				$('<img class="full-image" src="' + $refImage.data('fullscreen') +'" alt="' + $refImage.attr('title') + ' fullcreen" />').appendTo($refImage.closest('li'));
+			},
 			goFullScreen = function (elemSettings) {
 			    var $gallery = elemSettings.$carousel.closest('.' + GAL_WRAPPER_CLASS),
 			        $fullImages = $gallery.find('.galleryCarousel-images'),
@@ -119,6 +119,13 @@ cycleSettings: {}
 			        
 			        windowHeight = $(window).height();
 
+				if(!fullScreenInitialised){
+					//attach full screen images
+					$fullImages.find('.galleryCarousel-cycle li').each(function(){
+						attachFullScreenImage($(this).find('img'));
+					});
+				}
+					
 			    beforeFullscreen = {
 			        parentElement: $gallery.parent(),
 			        index: $gallery.parent().children().index($gallery),
@@ -142,20 +149,23 @@ cycleSettings: {}
 			            elemSettings.$carousel.find('.carouselControl-fullScreen').removeClass('fullScreen-active');
 			        }
 			    });
-
+				
+				fullScreenInitialised = true;
 			},
 			initFullScreen = function () {
-			    settings.$carousel.append('<a href="#" class="carouselControl-fullScreen"></a>');
-			    settings.$carousel.find('.carouselControl-fullScreen').click(function (e) {
+			    var $trigger = settings.$carousel.append('<a href="#" class="carouselControl-fullScreen"></a>');
+			    $trigger.click(function (e) {
 			        if ($(this).hasClass('fullScreen-active')) {
-			            removeFullScreen(getSettings($(this)));
+			            removeFullScreen(getSettings($trigger));
 			            $(this).removeClass('fullScreen-active');
 			        } else {
-			            goFullScreen(getSettings($(this)));
+			            goFullScreen(getSettings($trigger));
 			            $(this).addClass('fullScreen-active');
 			        }
 			        e.preventDefault();
 			    });
+
+			    if (settings.fullScreenOnLoad) { goFullScreen(getSettings($trigger)); }
 
 			},
 			showContent = function (elementID, slideSpeed) {
@@ -181,7 +191,10 @@ cycleSettings: {}
 			showSlide = function (elemId) {
 			    var $slide = $('#' + elemId),
 					slideIndex = $slide.index(),
-					settings = getSettings($slide);
+					settings = getSettings($slide),
+					$origImage = $slide.find('img'),
+				    fullScreenHref = $origImage.data('fullscreen');
+					
 			    settings.$imageWrapper.cycle(slideIndex);
 			    settings.$currentSlide = $slide;
 
@@ -285,8 +298,8 @@ cycleSettings: {}
 				        $caption = $link.find('>p'),
 				        captionHtml = $caption.html(),
 				        thumbImageSrc = $img.attr('src'),
-				        medImageSrc = $link.attr('href'),
-				        fullImageSrc = $link.data('fullscreen');
+				        medImageSrc = $link.attr('href');
+				        //fullImageSrc = $link.data('fullscreen');
 
 
 					imageItem = '<li id="carousel-item-' + itemindex + '">';
@@ -294,8 +307,8 @@ cycleSettings: {}
 					imageItem += '<h3>' + title + '</h3>';
 					imageItem += '<p>' + captionHtml + '</p>';
 					imageItem += '</div><div class="images-caption-trans">&nbsp;</div></div>';
-					imageItem += '<img class="med-image" src="' + medImageSrc + '" title="' + title + '" alt="' + title + '" />';
-					imageItem += '<img class="full-image" src="' + fullImageSrc +'" alt="' + title + '" />';
+					imageItem += '<img class="med-image" data-fullscreen="' + $link.data('fullscreen') + '" src="' + medImageSrc + '" title="' + title + '" alt="' + title + '" />';
+					//imageItem += '<img class="full-image" src="' + fullImageSrc +'" alt="' + title + '" />';
 					imageItem += '</li>';
 
 					carouselItem = '<li><a class="carousel-item-link" href="#carousel-item-' + itemindex + '" >';
