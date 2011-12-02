@@ -197,7 +197,7 @@ cycleSettings: {}
 			    settings.$currentSlide = $slide;
 
 				if (slideIndex >= settings.totalSlides) {
-					settings.$galleryNextLink.addClass(GAL_NEXT_DISABLED
+					settings.$galleryNextLink.addClass(GAL_NEXT_DISABLED);
 				} else {
 					settings.$galleryNextLink.removeClass(GAL_NEXT_DISABLED);
 				}

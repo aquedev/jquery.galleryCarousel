@@ -6,7 +6,7 @@
 .cc, .clearfix { zoom: 1; } .cc:after, .clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 .galleryCarousel{
 	height:288px;
-	background: #aaa;
+	background: #fff;
 	width: 100%;
 }
     .galleryCarousel-holdingContent img{

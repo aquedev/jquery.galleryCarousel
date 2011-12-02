@@ -6,36 +6,8 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 <head>
 	<title>jQuery.galleryCarousel demo</title>
+    <link rel="stylesheet" href="css/demo.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="css/jquery.galleryCarousel.css" type="text/css" media="screen" />
-    <style type="text/css">
-		body{
-			font-family: Arial, Helvetica, "Nimbus Sans L", "Free Sans", Sans-Serif;
-			color:#555;
-			font-size: 12px; /*12px*/
-			padding:16px;
-		}
-		p{font-size:12px;}
-		pre{
-			background:#ddd;
-			padding:16px;
-			text-align:left;
-			font-size:1.2em;
-		}
-		
-		.docs{
-			clear:both;
-			width:40%;
-		}
-        .contentWrapper {
-            position: relative;
-            width: 80%;
-			margin:20px 20px;
-        }
-		.gallerysmallwidth{
-			width:500px;
-			float:left;
-		}
-    </style>
     <script src="lib/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="lib/jquery-plugins/jquery.cycle.all.js" type="text/javascript"></script>
     <script src="lib/jquery-plugins/jquery.jcarousel.js" type="text/javascript"></script>
@@ -49,71 +21,64 @@
 				<h1>Gallery Carousel<h1>
 			</header>
 		</div>
-		<h2>Examples:</h2>
-		<div class="contentWrapper">
-		
-			<div>
-				<p>other content</p>
-				<p>other content</p>
-				<p>other content</p>
-				<p>other content</p>
-				
-			</div>
-			
-			<div class="gallerysmallwidth">
-				<h3>Gallery 1</h3>
-				<div class="galleryCarousel gallery1">
-					<ul>
-						<li>
-							<a data-fullscreen="images/large/image-1.jpg" href="images/normal/image-1.jpg">
-								<img src="images/normal/image-1.jpg" title="image 1"  alt="alt image 1" />
-								<p>description for image 1</p>
-							</a>
-						</li>
-						<li>
-							<a data-fullscreen="images/large/image-2.jpg" href="images/normal/image-2.jpg">
-								<img src="images/normal/image-2.jpg" title="image 2"  alt="alt image 2" />
-								<p>description for image 2</p>
-							</a>
-						</li>
-						<li>
-							<a data-fullscreen="images/large/image-3.jpg" href="images/normal/image-3.jpg">
-								<img src="images/normal/image-3.jpg" title="image 3"  alt="alt image 3" />
-								<p>description for image 3</p>
-							</a>
-						</li>
-					</ul>
+		<div class="contentWrapper cc">
+			<div class="cc">
+				<div class="mod-gridItem">
+					<h3>Gallery 1</h3>
+					<div class="galleryCarousel gallery1">
+						<ul>
+							<li>
+								<a data-fullscreen="images/large/image-1.jpg" href="images/normal/image-1.jpg">
+									<img src="images/normal/image-1.jpg" title="image 1"  alt="alt image 1" />
+									<p>description for image 1</p>
+								</a>
+							</li>
+							<li>
+								<a data-fullscreen="images/large/image-2.jpg" href="images/normal/image-2.jpg">
+									<img src="images/normal/image-2.jpg" title="image 2"  alt="alt image 2" />
+									<p>description for image 2</p>
+								</a>
+							</li>
+							<li>
+								<a data-fullscreen="images/large/image-3.jpg" href="images/normal/image-3.jpg">
+									<img src="images/normal/image-3.jpg" title="image 3"  alt="alt image 3" />
+									<p>description for image 3</p>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
-			</div>
-<br />
-			<div class="gallerysmallwidth">
-				<h3>Gallery 2</h3>
-				<div class="galleryCarousel gallery2">
-					<ul>
-						<li>
-							<a data-fullscreen="images/large/image-4.jpg" href="images/normal/image-4.jpg">
-								<img src="images/normal/image-4.jpg" title="image 4"  alt="alt image 4" />
-								<p>description for image 1</p>
-							</a>
-						</li>
-						<li>
-							<a data-fullscreen="images/large/image-5.jpg" href="images/normal/image-5.jpg">
-								<img src="images/normal/image-5.jpg" title="image 5"  alt="alt image 5" />
-								<p>description for image 2</p>
-							</a>
-						</li>
-						<li>
-							<a data-fullscreen="images/large/image-6.jpg" href="images/normal/image-6.jpg">
-								<img src="images/normal/image-6.jpg" title="image 6"  alt="alt image 6" />
-								<p>description for image 3</p>
-							</a>
-						</li>
-					</ul>
+				<div class="mod-gridItem">
+					<h3>Gallery 2</h3>
+					<div class="galleryCarousel gallery2">
+						<ul>
+							<li>
+								<a data-fullscreen="images/large/image-4.jpg" href="images/normal/image-4.jpg">
+									<img src="images/normal/image-4.jpg" title="image 4"  alt="alt image 4" />
+									<p>description for image 1</p>
+								</a>
+							</li>
+							<li>
+								<a data-fullscreen="images/large/image-5.jpg" href="images/normal/image-5.jpg">
+									<img src="images/normal/image-5.jpg" title="image 5"  alt="alt image 5" />
+									<p>description for image 2</p>
+								</a>
+							</li>
+							<li>
+								<a data-fullscreen="images/large/image-6.jpg" href="images/normal/image-6.jpg">
+									<img src="images/normal/image-6.jpg" title="image 6"  alt="alt image 6" />
+									<p>description for image 3</p>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
+			
 			</div>
 			
+
 			
-			<div class="docs">
+			<div class="mod-details">
 				
 				<h2>
 					Gallery Carousel options and their defaults.
@@ -146,7 +111,7 @@
 				
 				<pre>
 $(function(){
-	$('#targetElement').galleryCarousel({});
+		$('#targetElement').galleryCarousel({});
 });
 				</pre>
 				<h3>Options:</h3>
@@ -155,8 +120,11 @@ $(function(){
 {
 	activeItemClass: 'scroller-image-selected',
 	height: 280,
-	width:null,
-	auto:false,
+	width: null,
+	showControls: true,
+	allowFullScreen: true,
+	fullScreenOnLoad: false,
+	auto: true,
 	cycleSettings: {}
 }
 					
@@ -174,7 +142,8 @@ $(function(){
 					fullScreenOnLoad:false
 				});
                 $('.gallery2').galleryCarousel({
-					height: 430, 
+					height: 300, 
+
 					auto: true,
 					fullScreenOnLoad:false
 				});

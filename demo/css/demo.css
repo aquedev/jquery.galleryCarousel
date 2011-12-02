@@ -1,0 +1,399 @@
+/* 
+ * adapted from:
+ * http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+/*
+    This file is used to allow all browsers to start from the same style properties.
+*/
+
+div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, hgroup, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, figure, footer, header, 
+hgroup, nav, section,
+mark, m, meter, progress, small, time
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+/* html and body need layout otherwise ie6 will starts at -1px */
+html,body {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	zoom: 1;
+}
+body { line-height: 1.08; }
+
+/* lists */
+ol, ul { }
+ol    { list-style-type: decimal; }
+ol ol { list-style-type: lower-alpha; }
+ol li { zoom: normal; }
+ul    { list-style-type: disc; }
+ul li { }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus { outline: 0; }
+
+/* remember to highlight inserts somehow! */
+ins { text-decoration: none; }
+del { text-decoration: line-through; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* additional reset styles */
+a img {border:0;}
+
+/* html 5 elements */
+article, aside, figure, footer, header, 
+hgroup, nav, section { display:block; }
+mark, m, meter, progress, small, time { display: inline; }
+
+/* form elements */
+input[type="submit"]::-moz-focus-inner { border: 0; padding: 0; }
+input[type="submit"] { 
+    display: inline-block; 
+    position: relative; 
+    padding: 0; 
+    margin-right: .1em; 
+    text-decoration: none !important; 
+    cursor: pointer; 
+    text-align: center; 
+    zoom: 1; 
+    overflow: visible; /* the overflow property removes extra width in IE */
+} 
+
+
+/* Prevent iOS, WinMobile from adjusting font size */
+@media screen and (max-device-width: 480px) {
+  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } 
+}
+
+/*
+    brand.css
+    =================================
+    These styles are used to set basic elements to fit to a brand.
+    It should be able to be added to a page no matter what the media type 
+    to set the brand.
+    It must not contain layout styles [ie margins,position,padding,display]. 
+    It would be used for: colors, text, fonts
+    It should not contain ids, only elements and classes
+    
+    - Document Elements
+    - links
+    - paragraphs 
+    - headers 
+    - lists 
+    - tables
+    - forms 
+
+*/
+
+/**
+    => Document Elements
+--------------------------------------------------*/
+/* always force a scrollbar in non-IE */
+html            { overflow-y: scroll; }
+
+/* set global font family */
+body, select, input, textarea {
+	font-family: Arial, Helvetica, "Nimbus Sans L", "Free Sans", Sans-Serif; /* Most consistent Arial Based */
+	
+	/* Ref: http://articles.sitepoint.com/article/eight-definitive-font-stacks/2 */
+
+	/* Rich Helvetica/Arial-based sans serif stack  	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; */
+
+	/* Verdana-based sans serif							font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif; */
+
+	/* traditional Garamond-based serif stack			font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif; */
+
+	/* Trebuchet-based sans serif						font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif; */
+
+	/* monospace										font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace; */
+}	
+body            {
+	/* font-size: 62.5%; /*10px*/
+	/* font-size: 68.8%; /*11px*/
+	font-size: 75%; /*12px*/
+	/* font-size: 81.3%; /*13px*/
+    /*font-size: 87.5%; /*14px*/
+
+	line-height: 1.3334;
+	color:#58595b;
+
+}
+body.acc-med	{ font-size: 85%; }
+body.acc-large	{ font-size: 100%; }
+
+
+/* hand cursor on clickable input elements */
+label, input[type=button], input[type=submit], button { cursor: pointer; }
+
+/* webkit browsers add a 2px margin outside the chrome of form elements */ 
+button, input, select, textarea { margin: 0; }
+
+/* make buttons play nice in IE:   
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {  width: auto; overflow: visible; }
+/* These selection declarations have to be separate.
+   No text-shadow: twitter.com/miketaylr/status/12228805301 
+   Also: hot pink. */
+::-moz-selection { background: #009cc7; color:#fff; text-shadow: none; }
+::selection      { background:#009cc7; color:#fff; text-shadow: none; } 
+
+/**
+    => links
+--------------------------------------------------*/
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a                     { outline: none; }
+a:focus               { outline: thin dotted; }
+a:active, a:hover     { outline: none; }
+
+a, a:link             { color:#ff9519; text-decoration:none;}
+a:visited             { color:#e08316; }
+a:hover, a:active     { text-decoration:underline;   }
+a:focus               { }
+a img                 { border: none; }
+
+/*  j.mp/webkit-tap-highlight-color */
+a:link          { -webkit-tap-highlight-color: #FF5E99; } 
+
+abbr            {}
+address         { margin-bottom: 16px; }
+blockquote      {}
+
+/* bicubic resizing for non-native sized IMG: 
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+img             { -ms-interpolation-mode: bicubic; }
+
+pre { 
+  padding: 16px; 
+  
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+}
+strong          {}
+em              { font-weight:normal;}
+small           { font-size:85%; }
+
+/* normalize monospace sizing 
+ * en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome
+ */
+pre, code, 
+kbd, samp       { font-family: monospace, sans-serif; }
+
+
+
+
+/* 
+    => paragraphs 
+----------------------------------------------------*/
+p               { margin-bottom: 16px; }
+p+p             {}
+p:first-child   {}
+p:last-child    { margin-bottom: 0; }
+
+/* 
+    => headers 
+----------------------------------------------------*/
+/* www.aestheticallyloyal.com/public/optimize-legibility/ */ 
+h1,h2,h3,h4,h5,h6   { font-weight: bold; text-rendering: optimizeLegibility; }
+h1                  { font-size:1.5em; margin: 0 0 16px; position: relative; top: -2px; line-height: 0.889; } /*18px with 16px line-height, nudge down to keep to baseline grid */
+h2                  { font-size:1.334em; line-height:1; position: relative; top: -1px; } /* 16px, line-height 16px */
+h3                  { }
+h4                  { }
+h5                  { }
+h6                  { }
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child	    { margin-top: 0; }
+
+
+h2 strong,
+h3 strong           {}
+
+
+/* 
+    => lists 
+----------------------------------------------------*/
+
+/*
+    DL Lists
+    Width needs to be explicitly set on the dd it the sum if the dt and th dd width is greater than the dl.
+    This is to ensure the content is restricted to it's container and the layout
+    does not break cross browser.
+*/
+dl              { padding: 0 0 16px;}
+dl:after        { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+dt              { clear: left; display: inline-block; float: left; font-weight: bold; padding:0 10px 0 0; width:115px;}
+dd              { float:left; width:200px; *float:none;}
+
+
+li			    { }
+ol              { padding: 0 0 16px 23px; }
+ol ol           { padding-top: 0; }
+ul              { padding: 0 0 16px 20px;}
+ul ul           { padding-top: 0; }
+/*
+ * Add this in if you want to use an image for the list items
+ul li           { list-style-type:none; list-style-image: url("/images/li-main.gif"); }
+ul li li        { list-style-image: none; list-style-type: circle; }
+ul li li li     { list-style-image: none; list-style-type: disc; }
+ul li li li li  { list-style-image: none; list-style-type: square; }
+*/
+
+/* when lists come straight after a paragraph */
+p+ul, p+ol      { padding-top: 0; }
+
+/* 
+    => tables
+----------------------------------------------------*/
+table                   { font-size:inherit; font:100%; margin: 4px 0 7px; width: 100%; }
+table caption           { background: #4e4e4e; color: #fff; font-size: 1.1em; font-weight: bold; text-align: left; }
+table caption span      { display: block; padding: 10px 10px 8px; position: relative; }
+table caption .aside    { position: absolute; top:0; right: 0; }
+tr                      {}
+th                      { border: solid 1px #c1c1c1; padding: 8px 3px 7px; text-align: center; }
+td                      { border: solid 1px #c1c1c1; padding: 8px 3px 7px; text-align: center; }
+tr:nth-child(odd) td    { background: #e6e7e8; }
+.ie6 tr.odd td,
+.ie7 tr.odd td,	
+.ie8 tr.odd td          { background: #e6e7e8; }
+	
+/* 
+    => forms 
+----------------------------------------------------*/
+button,select, input, textarea { font-size:99%; font-family: inherit; }
+
+/* make buttons play nice in IE:    
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button          {  width: auto; overflow: visible; }
+
+fieldset        {}
+input           { vertical-align: middle; }
+label           { vertical-align: middle; }
+legend          { } .ie6 legend, .ie7 legend { margin-left: -7px; }
+select          { padding: 4px 0; vertical-align: middle; }
+textarea	    { overflow: auto; vertical-align: 1px; }
+
+/* align checkboxes, radios, text inputs with their label
+   by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: middle; *vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+
+
+
+/* 
+    => Reusable 	
+----------------------------------------------------*/
+/* for image replacement */
+.ir { display:block; text-indent:-999em; overflow:hidden; background-repeat: no-repeat; }
+
+/* Hide for both screenreaders and browsers
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display:none; visibility:hidden; } 
+
+/* Hide only visually, but have it available for screenreaders 
+   www.webaim.org/techniques/css/invisiblecontent/ 
+   */
+.visuallyhidden { 
+    position:absolute;
+    display: block; 
+    top: auto; 
+    left: -10000px; 
+    width: 1px; 
+    height: 1px; 
+}
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* >> The Magnificent CLEARFIX << */
+.cc:after, .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.cc, .clearfix { display: inline-block; }
+* html .cc, * html .clearfix { height: 1%; } /* Hides from IE-mac \*/
+.cc, .clearfix { display: block; }
+
+
+
+
+/* 
+    => Elements 	
+----------------------------------------------------*/
+body{
+	color:#fff;
+	background-color: #363636;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#363636), to(#5c5b5b)); 
+	background-image: -webkit-linear-gradient(top, #363636, #5c5b5b); 
+	background-image:    -moz-linear-gradient(top, #363636, #5c5b5b); 
+	background-image:     -ms-linear-gradient(top, #363636, #5c5b5b); 
+	background-image:      -o-linear-gradient(top, #363636, #5c5b5b); 
+	background-image:         linear-gradient(top, #363636, #5c5b5b);
+
+}
+pre{
+	background:#ddd;
+	padding:16px;
+	font-size:1.2em;
+	color: #000;
+}
+.header{
+	margin: 32px 8px;
+}
+.mod-details{
+	clear:left;
+	margin: 32px 8px;
+}
+.contentWrapper {
+    position: relative;
+}
+.gallerysmallwidth{
+	width:500px;
+	float:left;
+}
+
+
+#container{
+	margin:0 auto;
+	width:960px;
+}
+
+.mod-gridItem{
+	width:43%;
+	margin:8px;	
+	float:left;
+	background:#fff;
+	padding:16px;
+	border:4px solid #000;
+	color:#000;
+}
