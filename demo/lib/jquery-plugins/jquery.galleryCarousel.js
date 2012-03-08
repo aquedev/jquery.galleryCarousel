@@ -114,9 +114,7 @@ cycleSettings: {}
 			    var $gallery = settings.$carousel.closest('.' + GAL_WRAPPER_CLASS),
 			        $fullImages = $gallery.find('.galleryCarousel-images'),
 			        $controls = $gallery.find('.carousel-wrapper'),
-
 			        windowHeight = $(window).height();
-
 				if(!fullScreenInitialised){
 					//attach full screen images
 					$fullImages.find('.galleryCarousel-cycle li').each(function(){
@@ -272,7 +270,13 @@ cycleSettings: {}
 			},
 			// positioning, element settings
 			setPositioning = function($wrapper, settings){
-				$wrapper.height(settings.height + 'px').width(settings.width + 'px');
+				if(settings.height){
+					$wrapper.height(settings.height + 'px');
+				}
+
+				if(settings.width){
+					$wrapper.width(settings.width + 'px');
+				}
 			},
 			buildImageGallery = function($elem, settings){
 				var imageData = [],
